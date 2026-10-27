@@ -17,11 +17,11 @@ Añade al menos otro ejemplo usando print y escribe en un comentario qué espera
 Al terminar: git commit -m "Resuelve ejercicio 07".
 """
 
-# TODO: importa reduce desde functools.
+from functools import reduce
 
 def total_ventas(pedidos):
-    # TODO: implementa lo solicitado y devuelve el resultado.
-    pass
+    subtotales = list(map(lambda pedido: pedido[1] * pedido[2], pedidos))
+    return reduce(lambda acumulador, valor: acumulador + valor, subtotales, 0)
 
 
 # Ejemplo de uso: inicialmente imprime None porque falta la implementación.
@@ -29,3 +29,5 @@ pedidos = [("cafe", 10, 2), ("te", 8, 3), ("torta", 25, 1)]
 print(total_ventas(pedidos))
 
 # TODO: añade otro ejemplo con print y su resultado esperado en un comentario.
+pedidos2 = [("pan", 15, 4), ("leche", 18, 2), ("huevos", 22, 6)]
+print(total_ventas(pedidos2))  # Se espera: 128
