@@ -23,8 +23,11 @@ Al terminar: git commit -m "Resuelve ejercicio 02".
 """
 
 def preparar_catalogo(productos):
-    # TODO: implementa lo solicitado y devuelve el resultado.
-    pass
+    disponibles = [p["nombre"] for p in productos if p["precio"] <= 20]
+    precios = {p["nombre"]: p["precio"] for p in productos}
+    categorias = {p["categoria"] for p in productos}
+
+    return {"disponibles": disponibles, "precios": precios, "categorias": categorias}       
 
 
 # Ejemplo de uso: inicialmente imprime None porque falta la implementación.
@@ -36,3 +39,9 @@ productos = [
 print(preparar_catalogo(productos))
 
 # TODO: añade otro ejemplo con print y su resultado esperado en un comentario.
+productos2 = [
+    {"nombre": "pan", "precio": 15, "categoria": "panaderia"},
+    {"nombre": "leche", "precio": 18, "categoria": "lacteos"},
+    {"nombre": "huevos", "precio": 22, "categoria": "lacteos"},
+]
+print(preparar_catalogo(productos2))
